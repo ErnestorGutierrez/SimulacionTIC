@@ -40,3 +40,20 @@ jobs:
 
       - name: Ejecutar pruebas
         run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Crear carpeta dist
+        run: mkdir -p dist
+
+      - name: Copiar archivos a dist
+        run: cp package.json dist/
+
+      - name: Despliegue simulado
+        run: echo "🚀 Despliegue simulado realizado con éxito"
